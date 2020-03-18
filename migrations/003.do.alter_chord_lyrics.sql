@@ -1,0 +1,1 @@
+UPDATE chordful_chords

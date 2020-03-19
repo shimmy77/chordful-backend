@@ -2,7 +2,7 @@ const ChordsService = {
     getAllNotes(knex) {
         return knex.select('*').from('chordful_chords')
     },
-    insertFolder(knex, newNote) {
+    insertFolder(knex, newChord) {
         return knex
             .insert(newChord)
             .into('chordful_chords')
@@ -23,7 +23,7 @@ const ChordsService = {
             .where({ id })
             .delete()
     },
-    updateUser(knex, id, newChordFields) {
+    updateLyrics(knex, id, newChordFields) {
         return knex('chordful_chords')
             .where({ id })
             .update(newChordFields)

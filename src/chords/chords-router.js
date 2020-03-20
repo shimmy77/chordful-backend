@@ -1,12 +1,12 @@
 const express = require('express')
 const path = require('path')
 const xss = require('xss')
-const NotesService = require('./notes-service')
+const ChordsService = require('./chords-service')
 
 const chordsRouter = express.Router()
 const jsonParser = express.json()
 
-const serializeNotes = note => ({
+const serializeChords = chords => ({
     id: chord.id,
     title: xss(chord.title),
     artist: chord.content,
@@ -19,8 +19,8 @@ chordsRouter
     .route('/')
     .get((req, res, next) => {
         const knexInstance = req.app.get('db')
-        ChordsService.getAllNotes(knexInstance)
-            .then(notes => {
+        ChordsService.getAllChords(knexInstance)
+            .then(chords => {
                 res.json(chords)
             })
             .catch(next)
@@ -45,7 +45,7 @@ chordsRouter
                 res
                     .status(201)
                     .location(path.posix.join(req.originalUrl, `/${chord.id}`))
-                    .json(serializeNotes(chord))
+                    .json(serializeChords(chord))
             })
             .catch(next)
     })

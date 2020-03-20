@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const xss = require('xss')
-const ChordsService = require('./chords-service')
+const ChordsService = require('./chords-services')
 
 const chordsRouter = express.Router()
 const jsonParser = express.json()
@@ -105,4 +105,4 @@ chordsRouter
         .catch(next)
     })
 
-module.exports = ChordsRouter
+module.exports = chordsRouter
